@@ -1,5 +1,6 @@
 package com.gcasey.spotfinder.infrastructure.security;
 
+import com.gcasey.spotfinder.data.user.UserRepository;
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;
 import io.jsonwebtoken.io.Decoders;
@@ -16,10 +17,13 @@ import java.util.HashMap;
 public class JwtService {
 
     private final String jwtKey;
+    private final UserRepository userRepository;
 
     @Autowired
-    public JwtService(@Value("${jwt.key}") String jwtKey) {
+    public JwtService(@Value("${jwt.key}") String jwtKey,
+                      UserRepository userRepository) {
         this.jwtKey = jwtKey;
+        this.userRepository = userRepository;
     }
 
     private SecretKey getSigningKey() {
