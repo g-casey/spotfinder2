@@ -46,9 +46,10 @@ public class SpotifyRequestService {
     }
 
     public Song getTrack(String id) {
-        return Song.from(makeRequest(client.
-                getTrack(id)
-                .market(CountryCode.US).build()
+        return Song.from(makeRequest(client
+                .getTrack(id)
+                .market(CountryCode.US)
+                .build()
         ));
     }
 
@@ -64,10 +65,14 @@ public class SpotifyRequestService {
                         .limit(amount)
                         .build())
                         .getTracks())
-                .filter(track -> track.getPreviewUrl() != null)
+                .filter(track -> track.getPreviewUrl() != null) // remove unplayable songs
                 .map(TrackSimplified::getId)
                 .map(this::getTrack)
                 .toList();
+    }
+
+    public List<String> getAllGenres() {
+        return Arrays.stream(makeRequest(client.getAvailableGenreSeeds().build())).toList();
     }
 
 }

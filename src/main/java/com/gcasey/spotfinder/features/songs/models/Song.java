@@ -12,7 +12,8 @@ public record Song(String id,
                    Album album,
                    boolean isPlayable,
                    int popularity,
-                   String externalUrl) {
+                   String externalUrl,
+                   String previewUrl) {
 
     public static Song from(Track track) {
         return new Song(
@@ -23,7 +24,8 @@ public record Song(String id,
                 new Album(track.getAlbum().getName(), track.getAlbum().getImages()[0].getUrl()),
                 track.getIsPlayable(),
                 track.getPopularity(),
-                track.getExternalUrls().get("spotify")
+                track.getExternalUrls().get("spotify"),
+                track.getPreviewUrl()
         );
     }
 }

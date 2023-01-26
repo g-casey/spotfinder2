@@ -36,5 +36,10 @@
 		"vite": "^4.0.0",
 		"vitest": "^0.25.3"
 	},
-	"type": "module"
+	"type": "module",
+	"dependencies": {
+		"svelte-loading-spinners": "^0.3.4",
+		"svelte-material-icons": "^2.1.0",
+		"swiper": "^8.4.6"
+	}
 }

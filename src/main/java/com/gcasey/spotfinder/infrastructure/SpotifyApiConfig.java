@@ -1,12 +1,10 @@
 package com.gcasey.spotfinder.infrastructure;
 
-import com.gcasey.spotfinder.infrastructure.exceptions.CustomException;
 import org.apache.hc.core5.http.ParseException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
-import org.springframework.http.HttpStatus;
 import se.michaelthelin.spotify.SpotifyApi;
 import se.michaelthelin.spotify.exceptions.SpotifyWebApiException;
 
@@ -38,9 +36,9 @@ public class SpotifyApiConfig {
         try {
             String token = api.clientCredentials().build().execute().getAccessToken();
             api.setAccessToken(token);
-            return api;
         } catch (IOException | ParseException | SpotifyWebApiException e) {
-            throw new CustomException("Failed to authenticate with Spotify", HttpStatus.BAD_GATEWAY);
+            //throw new CustomException("Failed to authenticate with Spotify", HttpStatus.BAD_GATEWAY);
         }
+        return api;
     }
 }
