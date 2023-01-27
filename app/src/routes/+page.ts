@@ -2,6 +2,7 @@ import type { Song } from "$lib/data";
 import {backendUrl} from "../config";
 import type { PageLoad } from './$types';
 
+export const prerender = true;
 
 export const load = (async ({fetch}) => {
     const genreData = await fetch(`${backendUrl}/songs/genres`);

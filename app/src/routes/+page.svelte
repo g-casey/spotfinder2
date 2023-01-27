@@ -29,7 +29,7 @@
 	</div>
 	{#await fetchSongs()}
 		<div class="flex justify-center items-center max-w-xl h-1/2">
-			<Circle color="var(--color-primary-500)" />
+			<Circle color="rgb(var(--color-primary-500))" />
 		</div>
 	{:then songs}
 		<Carousel {songs} />
