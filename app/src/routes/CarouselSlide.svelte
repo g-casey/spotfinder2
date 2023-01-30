@@ -8,10 +8,10 @@
 	import Pause from 'svelte-material-icons/Pause.svelte';
 	import 'swiper/css/virtual';
 
-	export let song: Song;
+    export let song: Song;
 
     let volume = 0.05;
-    let paused;
+    let paused = true;
 </script>
 
 <SwiperSlide class="rounded-xl shadow-sm p-0 sm:py-16 transition-all text-slate-100">
@@ -54,7 +54,7 @@
         </div>
         <p class="font-light">{song.artists.map((artist) => artist.name).join(', ')}</p>
     </div>
-    <audio crossOrigin="anonymous" autoplay loop bind:paused bind:volume>
+    <audio crossOrigin="anonymous" loop bind:paused bind:volume>
         <source src={song.previewUrl} type="audio/mpeg"/>
     </audio>
 </SwiperSlide>

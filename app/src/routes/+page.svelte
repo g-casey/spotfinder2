@@ -1,16 +1,11 @@
 <script lang="ts">
-	import type { Song } from '$lib/data';
-	import { backendUrl } from '../config';
 	import type { PageData } from './$types';
 	import Carousel from './Carousel.svelte';
 	import Circle from 'svelte-loading-spinners/Circle.svelte';
+	import { fetchSongs } from "../lib/SongService";
 
 	export let data: PageData;
 
-	const fetchSongs = async () => {
-		const songData = await fetch(backendUrl + '/songs/recommendations');
-		return (await songData.json()) as Song[];
-	};
 </script>
 
 <div class="container h-full mx-auto max-w-xl">
@@ -20,6 +15,7 @@
 			<option>Low</option>
 			<option>Medium</option>
 			<option>High</option>
+
 		</select>
 		<select>
 			{#each data.genres as genre}
@@ -27,7 +23,7 @@
 			{/each}
 		</select>
 	</div>
-	{#await fetchSongs()}
+	{#await fetchSongs({})}
 		<div class="flex justify-center items-center max-w-xl h-1/2">
 			<Circle color="rgb(var(--color-primary-500))" />
 		</div>
