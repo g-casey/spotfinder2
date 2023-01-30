@@ -1,12 +1,12 @@
 <script lang="ts">
-	import type {Song} from '$lib/data';
-	import {SwiperSlide} from 'swiper/svelte';
+    import type {Song} from '$lib/data';
+    import {SwiperSlide} from 'swiper/svelte';
 
-	import ChevronLeft from 'svelte-material-icons/ChevronLeft.svelte';
-	import ChevronRight from 'svelte-material-icons/ChevronRight.svelte';
-	import Play from 'svelte-material-icons/Play.svelte';
-	import Pause from 'svelte-material-icons/Pause.svelte';
-	import 'swiper/css/virtual';
+    import ChevronLeft from 'svelte-material-icons/ChevronLeft.svelte';
+    import ChevronRight from 'svelte-material-icons/ChevronRight.svelte';
+    import Play from 'svelte-material-icons/Play.svelte';
+    import Pause from 'svelte-material-icons/Pause.svelte';
+    import 'swiper/css/virtual';
 
     export let song: Song;
 
@@ -40,7 +40,7 @@
             {/if}
         </button>
         <div class="w-7/12 flex items-center justify-around">
-            <button class="px-1 text-white absolute top-0 left-4 bottom-0 h-[39px] m-auto">
+            <button class="px-1 text-white absolute top-0 left-4 bottom-0 h-[39px] m-auto swiper-button-previous">
                 <ChevronLeft size="2.5rem"/>
             </button>
             <h2
@@ -48,7 +48,7 @@
             >
                 {song.name}
             </h2>
-            <button class="px-1 text-white absolute top-0 right-4 bottom-0 h-[39px] m-auto">
+            <button class="px-1 text-white absolute top-0 right-4 bottom-0 h-[39px] m-auto swiper-button-next">
                 <ChevronRight size="2.5rem"/>
             </button>
         </div>
